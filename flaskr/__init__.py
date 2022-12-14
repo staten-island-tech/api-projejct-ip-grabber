@@ -1,7 +1,11 @@
 import os
+import requests
 
 from flask import Flask
+from dotenv import dotenv_values
 
+env_values = dotenv_values('.env')
+API_KEY = env_values['API_KEY']
 
 def create_app(test_config=None):
     # create and configure the app
@@ -26,7 +30,12 @@ def create_app(test_config=None):
 
     # a simple page that says hello
     @app.route('/')
-    def hello():
-        return 'Hello, World!'
+    def current_temp():
+        # Need to get user location and input that as latitude and longitude
+        response = requests.get(f'https://api.openweathermap.org/data/2.5/weather?lat=30&lon=30&appid={API_KEY}')
+        data = response.json()
+        print(data)
+
+        return f"Current Temp is {round(data['main']['temp'] - 273)}°C"
 
     return app
