@@ -2,7 +2,7 @@ import os
 import requests
 import json
 
-from flask import Flask
+from flask import Flask, request
 from dotenv import dotenv_values
 
 env_values = dotenv_values('.env')
@@ -29,16 +29,18 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    def get_user_location():
-        response = requests.get('http://freegeoip.net/json')
+    def get_user_location(ip_address):
+        print(ip_address)
+        response = requests.get(f"http://ip-api.com/json/{ip_address}")        
         print(response.text)
 
     # a simple page that says hello
     @app.route('/')
     def current_temp():
-        # Need to get user location and input that as latitude and longitude
-        get_user_location()
+        # Need to get user location and input that as latitude and longitude 
+        get_user_location(ip)
 
-        return f"Current Temp is {round(data['main']['temp'] - 273)}°C"
+        # return f"Current Temp is {round(data['main']['temp'] - 273)}°C
+        return 'hi'
 
     return app
