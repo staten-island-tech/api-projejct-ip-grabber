@@ -1,7 +1,12 @@
 import os
+import requests
+import json
 
 from flask import Flask, render_template
+from dotenv import dotenv_values
 
+env_values = dotenv_values('.env')
+API_KEY = env_values['API_KEY']
 
 def create_app(test_config=None):
     # create and configure the app
@@ -24,9 +29,18 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    def get_user_location(ip_address):
+        print(ip_address)
+        response = requests.get(f"http://ip-api.com/json/{ip_address}")        
+        print(response.text)
+
     # a simple page that says hello
     @app.route('/')
-    def home():
-        return render_template('index.html')
+    def current_temp():
+        # Need to get user location and input that as latitude and longitude 
+        get_user_location(ip)
+
+        # return f"Current Temp is {round(data['main']['temp'] - 273)}°C
+        return 'hi'
 
     return app
