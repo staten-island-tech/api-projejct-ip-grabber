@@ -38,9 +38,8 @@ def create_app(test_config=None):
     @app.route('/')
     def current_temp():
         # Need to get user location and input that as latitude and longitude 
-        get_user_location(ip)
 
         # return f"Current Temp is {round(data['main']['temp'] - 273)}°C
-        return 'hi'
+        return render_template('index.html')
 
     return app
