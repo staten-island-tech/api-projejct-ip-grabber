@@ -34,9 +34,8 @@ def create_app(test_config=None):
         response = requests.get(f"http://ip-api.com/json/{ip_address}")        
         print(response.text)
 
-    # a simple page that says hello
     @app.route('/')
-    def current_temp():
+    def home():
         # Need to get user location and input that as latitude and longitude 
 
         # return f"Current Temp is {round(data['main']['temp'] - 273)}°C
