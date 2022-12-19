@@ -1,3 +1,6 @@
-.test{
-    color: blue;
+.heading{
+    color: rgb(86, 86, 102);
+    font-family: 'Barlow Condensed', sans-serif;
+    text-align: center;
+    font-size: 30px;
 }
