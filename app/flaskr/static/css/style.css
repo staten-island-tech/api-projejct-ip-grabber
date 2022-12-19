@@ -1,6 +1,18 @@
 .heading{
-    color: rgb(86, 86, 102);
+    color: rgb(2, 2, 2);
     font-family: 'Barlow Condensed', sans-serif;
     text-align: center;
     font-size: 30px;
 }
+
+.background-video {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+  }

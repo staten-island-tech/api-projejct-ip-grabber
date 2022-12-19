@@ -6,7 +6,7 @@ from flask import Flask, render_template
 from dotenv import dotenv_values
 
 env_values = dotenv_values('.env')
-#PI_KEY = env_values['API_KEY']
+#API_KEY = env_values['API_KEY']
 
 def create_app(test_config=None):
     # create and configure the app
