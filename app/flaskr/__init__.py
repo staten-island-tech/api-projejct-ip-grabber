@@ -2,7 +2,7 @@ import os
 import requests
 import json
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from dotenv import dotenv_values
 
 env_values = dotenv_values('.env')
@@ -29,10 +29,17 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    def get_user_location(ip_address):
-        print(ip_address)
-        response = requests.get(f"http://ip-api.com/json/{ip_address}")        
-        print(response.text)
+    user_location = {}
+
+    @app.route('/set_location', methods=['POST', 'GET'])
+    def set_location():
+        if request.method == 'POST':
+            raw_data = request.data.decode('utf-8')
+            data = json.loads(raw_data)
+            # print(f'Lat: {data.lat}, Long: {data.long}')
+            return 'hi'
+        else:
+            return redirect('/')
 
     @app.route('/')
     def home():
