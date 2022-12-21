@@ -46,4 +46,9 @@ li a{
 
 li a:hover{
   background-color: #111;
+  color: rgb(56, 126, 230);
+}
+
+.small-img{
+  width: 16%;
 }
