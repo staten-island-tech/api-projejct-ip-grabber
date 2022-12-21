@@ -28,6 +28,7 @@ ul{
   overflow: hidden;
   background-color: rgb(7, 25, 59);
   opacity: 95%;
+  text-align: center;
 }
 
 li{
@@ -57,4 +58,15 @@ header{
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.center-items{
+  align-items: center;
+}
+
+.button-1{
+  border-radius: 20px;
+  background-color: rgb(56, 126, 230);
+  float: right;
+  margin-right: 10px;
 }
