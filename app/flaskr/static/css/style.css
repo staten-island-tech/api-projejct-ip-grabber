@@ -3,7 +3,7 @@ body{
 }
 
 .heading{
-    color: rgb(7, 25, 59);
+    color: rgb(255, 255, 255);
     font-family: 'Barlow Condensed', sans-serif;
     text-align: center;
     font-size: 30px;
@@ -51,7 +51,7 @@ header{
 
 .navbar-links li{
   display: inline-block;
-  padding: 0px 20px;
+  padding: 0px 30px;
 }
 
 .navbar-links li, a{
@@ -77,4 +77,26 @@ header{
 
 .nav-center{
   justify-content: center;
+  margin-right: 200px;
+}
+
+.container{
+  background-color: rgb(40, 64, 114);
+  opacity: 80%;
+  width: fit-content;
+  margin: auto;
+  margin-top: 5%;
+}
+
+.typed-out{
+  overflow: hidden;
+  white-space: nowrap;
+  animation: 
+    typing 3s forwards;
+  width: 0;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 300px }
 }
