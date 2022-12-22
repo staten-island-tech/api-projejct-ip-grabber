@@ -30,22 +30,29 @@ def create_app(test_config=None):
         pass
 
     user_location = {}
+    initialized = False
 
     @app.route('/set_location', methods=['POST', 'GET'])
     def set_location():
         if request.method == 'POST':
             raw_data = request.data.decode('utf-8')
             data = json.loads(raw_data)
-            # print(f'Lat: {data.lat}, Long: {data.long}')
+            user_location = data
+            initialized = True
+            print(initialized)
+
+            
+
             return 'hi'
         else:
             return redirect('/')
 
     @app.route('/')
     def home():
+        print(initialized)
         # Need to get user location and input that as latitude and longitude 
 
         # return f"Current Temp is {round(data['main']['temp'] - 273)}°C
-        return render_template('index.html')
+        return render_template('index.html', user_location=user_location, initialized=initialized)
 
     return app

@@ -8,6 +8,9 @@
 </head>
 <body>
     Hello
-<script src="/static/js/get_location.js"></script>
+{% if initialized == False %}
+Hi
+    <script src="/static/js/get_location.js"></script>
+{% endif %}
 </body>
 </html>
