@@ -9,22 +9,18 @@
         <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap" rel="stylesheet">
     </head>
     <body>
-        <nav>
-            <ul>
-                <li>
-                    <header>
-                        <img class="small-img" src="../static/images/wtLogo.png">
-                    </header>
-                </li>
-                <div class="center-items">
+        <header class="nav">
+            <img class="logo" src="../static/images/WeatherTech.png">
+            <nav>
+                <ul class="navbar-links nav-center">
                     <li><a href="#">Local Weather</a></li>
                     <li><a href="#">Forecast</a></li>
                     <li><a href="#">Bruh</a></li>
                     <li><a href="#">Joe Mama</a></li>
-                    <li class="button-1"><a href="#">Sign Up</a></li>
-                </div>
-            </ul>
-        </nav>
+                </ul>
+            </nav>
+            <a href="#"><button class="button-1">Sign Up</button></a>
+        </header>
         {% block content %}
         {% endblock %}
     </body>
