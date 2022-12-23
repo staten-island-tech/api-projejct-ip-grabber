@@ -2,7 +2,7 @@ import os
 import requests
 import json
 
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, g
 from dotenv import dotenv_values
 
 env_values = dotenv_values('.env')
@@ -29,30 +29,24 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    user_location = {}
-    initialized = False
-
     @app.route('/set_location', methods=['POST', 'GET'])
     def set_location():
         if request.method == 'POST':
             raw_data = request.data.decode('utf-8')
             data = json.loads(raw_data)
-            user_location = data
-            initialized = True
-            print(initialized)
-
-            
+            g.user_location = data
 
             return 'hi'
         else:
             return redirect('/')
 
+    
+
     @app.route('/')
     def home():
-        print(initialized)
-        # Need to get user location and input that as latitude and longitude 
+        print(g.user_location) 
 
         # return f"Current Temp is {round(data['main']['temp'] - 273)}°C
-        return render_template('index.html', user_location=user_location, initialized=initialized)
+        return render_template('index.html', user_location=user_location)
 
     return app
