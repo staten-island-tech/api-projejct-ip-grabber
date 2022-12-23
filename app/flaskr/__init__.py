@@ -5,6 +5,11 @@ import json
 from flask import Flask, render_template
 from dotenv import dotenv_values
 
+# New imports
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
+
+
 env_values = dotenv_values('.env')
 #API_KEY = env_values['API_KEY']
 
@@ -34,7 +39,19 @@ def create_app(test_config=None):
         response = requests.get(f"http://ip-api.com/json/{ip_address}")        
         print(response.text)
 
-    #flask --app flaskr --debug run
+    # flask --app flaskr --debug run
+
+    # New code
+
+    db = SQLAlchemy(app)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+    app.confic['SECRET_KEY'] = 'test'
+    db.init_app(app)
+
+    class User(db.Model, UserMixin):
+        id = db.Column(db.Integer, primary_key=True)
+        username = db.Column(db.String(20), nullable=False)
+        password = db.Column(db.String(80), nullable=False)
 
     @app.route('/')
     def home():
