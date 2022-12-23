@@ -34,11 +34,18 @@ def create_app(test_config=None):
         response = requests.get(f"http://ip-api.com/json/{ip_address}")        
         print(response.text)
 
+    #flask --app flaskr --debug run
+
     @app.route('/')
     def home():
-        # Need to get user location and input that as latitude and longitude 
-
-        # return f"Current Temp is {round(data['main']['temp'] - 273)}°C
         return render_template('index.html')
+
+    @app.route('/login')
+    def login():
+        return render_template('login.html')
+
+    @app.route('/register')
+    def register():
+        return render_template('register.html')
 
     return app
