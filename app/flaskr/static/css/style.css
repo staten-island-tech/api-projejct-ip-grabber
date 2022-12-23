@@ -81,22 +81,42 @@ header{
 }
 
 .container{
-  background-color: rgb(40, 64, 114);
-  opacity: 80%;
+  background-color: rgb(40, 64, 114, 0.6);
   width: fit-content;
   margin: auto;
   margin-top: 5%;
+  padding-left: 10px;
 }
 
-.typed-out{
+.typed-out1{
   overflow: hidden;
   white-space: nowrap;
   animation: 
-    typing 3s forwards;
+    typing1 2s forwards;
   width: 0;
 }
 
-@keyframes typing {
+@keyframes typing1 {
   from { width: 0 }
-  to { width: 300px }
+  to { width: 700px }
+}
+
+.typed-out2{
+  overflow: hidden;
+  border-right: 2px solid rgb(0, 0, 0);
+  white-space: nowrap;
+  animation: 
+  typing2 3s steps(20, end) forwards,
+  blinking .7s infinite;
+  width: 0;
+}
+
+@keyframes typing2 {
+  from { width: 0 }
+  to { width: 260px }
+}
+
+@keyframes blinking {
+  from { border-color: transparent }
+  to { border-color: rgb(0, 0, 0); }
 }
