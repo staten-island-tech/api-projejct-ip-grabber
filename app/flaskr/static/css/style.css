@@ -1,5 +1,6 @@
 body{
   margin: 0px;
+  font-family: 'Barlow Condensed', sans-serif;
 }
 
 .heading{
@@ -96,7 +97,7 @@ header{
   width: 0;
 }
 
-@keyframes typing1 {
+@keyframes typing1{
   from { width: 0 }
   to { width: 860px }
 }
@@ -111,12 +112,36 @@ header{
   width: 0;
 }
 
-@keyframes typing2 {
+@keyframes typing2{
   from { width: 0 }
   to { width: 260px }
 }
 
-@keyframes blinking {
+@keyframes blinking{
   from { border-color: transparent }
   to { border-color: rgb(0, 0, 0); }
+}
+
+.center{
+  text-align: center;
+}
+
+.form-group{
+  display: flex;
+  align-items: center;
+  margin: 5%;
+  text-align: right;
+}
+
+.form-control{
+  flex: 1 1 auto;
+}
+
+.form-title{
+  font-size: large;
+  margin-bottom: 50px;
+}
+
+.black{
+  color: black;
 }
