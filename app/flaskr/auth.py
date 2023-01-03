@@ -57,8 +57,8 @@ def register():
             flash('Account created!', category='success')
 
             # add new user to database
-            new_user = User(firstName=firstName, lastName=lastName, email=email, password=generate_password_hash(password1, method='sha256'))
-            db.session.add(new_user)
+            user = User(firstName=firstName, lastName=lastName, email=email, password=generate_password_hash(password1, method='sha256'))
+            db.session.add(user)
             db.session.commit()
             login_user(user, remember=True)
             # redirect user to home page
