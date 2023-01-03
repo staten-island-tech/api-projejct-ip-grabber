@@ -14,13 +14,16 @@
             <img class="logo" src="../static/images/WeatherTech.png">
             <nav>
                 <ul class="navbar-links nav-center">
-                    <li><a href="#">Local Weather</a></li>
-                    <li><a href="#">Forecast</a></li>
-                    <li><a href="#">Bruh</a></li>
-                    <li><a href="#">Joe Mama</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href='/'>Home</a></li>
+                        <li><a href="#">Local Forecast</a></li>
+                        <li><a href="#">Global Weather</a></li>
+                    {% else %}
+                        <li><a href="#">Joe Mama</a></li>
+                    {% endif %}
                 </ul>
+                <a href="#"><button class="button-1">Sign Up</button></a>
             </nav>
-            <a href="#"><button class="button-1">Sign Up</button></a>
         </header>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
