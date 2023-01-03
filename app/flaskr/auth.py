@@ -64,4 +64,4 @@ def register():
             # redirect user to home page
             return redirect('/')
 
-    return render_template('register.html')
+    return render_template('register.html', user=current_user)
