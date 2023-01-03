@@ -32,6 +32,7 @@ li, a, button{
   color: #edf0f1;
   text-decoration: none;
   list-style: none;
+  justify-content: space-between;
 }
 
 header{
@@ -78,7 +79,6 @@ header{
 
 .nav-center{
   justify-content: center;
-  margin-right: 200px;
 }
 
 .container{
@@ -114,7 +114,7 @@ header{
 
 @keyframes typing2{
   from { width: 0 }
-  to { width: 360px }
+  to { width: 260px }
 }
 
 @keyframes blinking{
