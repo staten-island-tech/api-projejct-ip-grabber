@@ -12,4 +12,4 @@ def home():
 @views.route('/forecast/<location>')
 @login_required
 def forecast(location):
-    return render_template('forecast.html', location=location, user=current_user)
+    return render_template('weather.html', location=location, user=current_user)
