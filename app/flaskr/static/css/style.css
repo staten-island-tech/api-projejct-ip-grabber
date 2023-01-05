@@ -134,11 +134,15 @@ header{
 
 .form-control{
   flex: flex;
+  width: 500px;
+  height: 55px;
+  font-size: 20px;
+  font-family: 'Barlow Condensed', sans-serif;
 }
 
-.form-title{
-  font-size: large;
-  margin-bottom: 50px;
+.label-1{
+  font-size: larger;
+  margin-top: 50px;
 }
 
 .black{
@@ -186,15 +190,9 @@ header{
   background-color: rgb(76, 109, 170, 0.8);
 }
 
-.label-1{
-  font-size: larger;
-  text-align: center;
-}
-
 .button-2{
   display: block;
   width: 150px;
   margin: 0 auto;
   margin-top: 40px;
 }
-
