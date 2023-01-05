@@ -156,3 +156,33 @@ header{
   align-items: center;
   justify-content: center;
 }
+
+.form-1{
+  background-color: white;
+  width: 600px;
+  height: 55px;
+  display: flex;
+  margin-top: 10%;
+  border: 2px;
+}
+
+.form-1 input{
+  flex: 1;
+  outline: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+}
+
+.form-1 button{
+  background-color: rgb(76, 109, 170);
+  padding: 10px 5px;
+  outline: none;
+  color: white;
+  width: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.form-1 button:hover{
+  background-color: rgb(76, 109, 170, 0.8);
+}
