@@ -7,3 +7,5 @@ class User(db.Model, UserMixin):
     lastName = db.Column(db.String(150))
     email = db.Column(db.String(150), unique=True)
     password = db.Column(db.String(150))
+    lat = db.Column(db.Numeric(150))
+    long = db.Column(db.Numeric(150))
