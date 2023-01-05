@@ -43,16 +43,6 @@ def create_app(test_config=None):
         response = requests.get(f"http://ip-api.com/json/{ip_address}")        
         print(response.text)
 
-    @app.route('/set_location', methods=['POST', 'GET'])
-    def set_location():
-        if request.method == 'POST':
-            raw_data = request.data.decode('utf-8')
-            data = json.loads(raw_data)
-
-            return 'hi'
-        else:
-            return redirect('/')
-
     # @app.route('/')
     # def home():
     #     # Need to get user location and input that as latitude and longitude 
