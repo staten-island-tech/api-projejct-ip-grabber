@@ -188,6 +188,7 @@ header{
 
 .label-1{
   font-size: larger;
+  text-align: center;
 }
 
 .button-2{
@@ -196,3 +197,4 @@ header{
   margin: 0 auto;
   margin-top: 40px;
 }
+
