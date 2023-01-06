@@ -38,11 +38,6 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    def get_user_location(ip_address):
-        print(ip_address)
-        response = requests.get(f"http://ip-api.com/json/{ip_address}")        
-        print(response.text)
-
     # @app.route('/')
     # def home():
     #     # Need to get user location and input that as latitude and longitude 
