@@ -3,6 +3,7 @@ from .models import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
+import json
 
 auth = Blueprint('auth', __name__)
 
@@ -39,6 +40,7 @@ def register():
         email = request.form.get('email')
         password1 = request.form.get('password1')
         password2 = request.form.get('password2')
+        location = json.loads(request.form.get('location'))
 
         user = User.query.filter_by(email=email).first()
         if user:
@@ -57,7 +59,7 @@ def register():
             flash('Account created!', category='success')
 
             # add new user to database
-            user = User(firstName=firstName, lastName=lastName, email=email, password=generate_password_hash(password1, method='sha256'))
+            user = User(firstName=firstName, lastName=lastName, email=email, password=generate_password_hash(password1, method='sha256'), lat=location['lat'], long=location['long'])
             db.session.add(user)
             db.session.commit()
             login_user(user, remember=True)

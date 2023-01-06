@@ -1,8 +1,9 @@
+
 import os
 import requests
 import json
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect
 from dotenv import dotenv_values
 
 # New imports!
@@ -36,11 +37,6 @@ def create_app(test_config=None):
         os.makedirs(app.instance_path)
     except OSError:
         pass
-
-    def get_user_location(ip_address):
-        print(ip_address)
-        response = requests.get(f"http://ip-api.com/json/{ip_address}")        
-        print(response.text)
 
     # @app.route('/')
     # def home():
