@@ -2,7 +2,7 @@ import requests, json
 
 api_key = '57fc3439dc46a8578604c33691f100e3'
 
-city_name = 'Anchorage'
+city_name = 'Fairbanks'
 state_code = 'AK'
 country_code = 'US'
 locationConverter = requests.get(f'http://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&limit=5&appid={api_key}').json()
