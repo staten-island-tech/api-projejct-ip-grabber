@@ -1,10 +1,9 @@
-
 import os
 import requests
 import json
 
 from flask import Flask, render_template, request, redirect
-from dotenv import dotenv_values
+# from dotenv import dotenv_values
 
 # New imports!
 from flask_sqlalchemy import SQLAlchemy
@@ -14,8 +13,8 @@ from flask_login import LoginManager
 db = SQLAlchemy()
 DB_NAME = 'database.db'
 
-env_values = dotenv_values('.env')
-#API_KEY = env_values['API_KEY']
+# env_values = dotenv_values('.env')
+# #API_KEY = env_values['API_KEY']
 
 def create_app(test_config=None):
     # create and configure the app
