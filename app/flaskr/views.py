@@ -1,7 +1,6 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from flask_login import login_required, current_user
 from .models import User
-import requests
 from .data import *
 
 views = Blueprint('views', __name__)
@@ -14,6 +13,9 @@ def home():
 @views.route('/forecast/<location>', methods=['GET', 'POST'])
 @login_required
 def forecast(location):
-    return render_template('weather.html', location=location, user=current_user, locationConverter=locationConverter, auto=auto)
+    if request.method == 'POST':
+        userInput = requests.form.get('search')
+        return render_template('weather.html', location=location, user=current_user, locationConverter=locationConverter, auto=auto, userInput=userInput)
+    return render_template('weather.html')
 
 # ADD GEOAPIFY API
