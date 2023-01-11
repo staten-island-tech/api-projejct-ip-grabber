@@ -14,6 +14,6 @@ def home():
 @views.route('/forecast/<location>', methods=['GET', 'POST'])
 @login_required
 def forecast(location):
-    return render_template('weather.html', location=location, user=current_user, locationConverter=locationConverter)
+    return render_template('weather.html', location=location, user=current_user, locationConverter=locationConverter, auto=auto)
 
 # ADD GEOAPIFY API
