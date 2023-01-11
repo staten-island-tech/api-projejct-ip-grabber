@@ -15,6 +15,10 @@
             <button type="submit">Search</button>
         </form>
     </div>
+    {% for x in locationConverter %}
+        {{ x['lat'] }}
+        {{ x['lon'] }}
+    {% endfor %}
 </body>
 </html>
 {% endblock %}
