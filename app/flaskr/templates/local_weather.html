@@ -15,6 +15,9 @@
             <button type="submit">Search</button>
         </form>
     </div>
+    {% for time in forecast['list'] %}
+        <p>{{ time['dt_txt'] }}: {{ time['main']['temp'] - 273 }}</p>
+    {% endfor %}
 </body>
 </html>
 {% endblock %}

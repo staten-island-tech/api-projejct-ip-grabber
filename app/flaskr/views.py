@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from .models import User
 import requests
 from .data import *
+import re
 
 views = Blueprint('views', __name__)
 
@@ -18,9 +19,7 @@ def home():
 def forecast(location):
     if location == 'local':
         forecast = requests.get(f'https://api.openweathermap.org/data/2.5/forecast?lat={current_user.lat}&lon={current_user.long}&appid={api_key}').json()
-        print(forecast)
         return render_template('local_weather.html', user=current_user, forecast=forecast)
     else: 
         return render_template('weather.html', location=location, user=current_user, locationConverter=locationConverter)
-
 # ADD GEOAPIFY API
