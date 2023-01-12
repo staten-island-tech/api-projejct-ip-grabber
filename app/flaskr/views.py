@@ -6,7 +6,8 @@ from .data import *
 
 views = Blueprint('views', __name__)
 
-api_key = '57fc3439dc46a8578604c33691f100e3'
+OpenWeather_api_key = '57fc3439dc46a8578604c33691f100e3'
+autofill_api_key = 'da825532c8614a4db984b18ba9be005a'
 
 @views.route('/')
 @login_required
@@ -27,20 +28,25 @@ def home():
 @login_required
 def forecast(location):
     if request.method == 'POST':
+
         city_code = request.form.get('search')
-        state_code = 'TX'
-        country_code = 'US'
-        locationConverter = requests.get(f'http://api.openweathermap.org/geo/1.0/direct?q={city_code},{state_code},{country_code}&limit=5&appid={api_key}').json()
+        state_code = ''
+        country_code = ''
+
+        url = f'https://api.geoapify.com/v1/geocode/autocomplete?text={city_code}&format=json&apiKey={autofill_api_key}'    
+        response = requests.get(url)
+        print(response.json())
+
+        locationConverter = requests.get(f'http://api.openweathermap.org/geo/1.0/direct?q={city_code},{state_code},{country_code}&limit=5&appid={OpenWeather_api_key}').json()
         print(locationConverter, city_code)
-        for x in locationConverter['main']:
+        for x in locationConverter:
             lat = x['lat']
             lon = x['lon']
         print(lat, lon)
-        currentWeather = requests.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={api_key}').json()
+
+        currentWeather = requests.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={OpenWeather_api_key}&units=imperial').json()
         print(currentWeather)
-        for x in currentWeather:
-            temp = x['temp']
-        print(temp)
+        temp = currentWeather['main']['temp']
         return render_template('weather.html', user=current_user, forecast=forecast, locationConverter=locationConverter, currentWeather=currentWeather)
     else: 
         return render_template('weather.html', location=location, user=current_user)

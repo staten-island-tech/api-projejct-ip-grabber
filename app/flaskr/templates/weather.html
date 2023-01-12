@@ -15,9 +15,7 @@
             <button type="submit">Search</button>
         </form>
     </div>
-    {% for x in currentWeather %}
-        {{ x['temp'] }}
-    {% endfor %}
+    {{ currentWeather['main']['temp'] }}
 </body>
 </html>
 {% endblock %}
