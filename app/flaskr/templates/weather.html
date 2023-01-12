@@ -10,14 +10,13 @@
 </head>
 <body>
     <div class="container-1">
-        <form class="search-1">
+        <form class="search-1" method="post">
             <input name="search" type="text" placeholder="Enter a location!">
             <button type="submit">Search</button>
         </form>
     </div>
-    {% for x in locationConverter %}
-        {{ x['lat'] }}
-        {{ x['lon'] }}
+    {% for x in currentWeather %}
+        {{ x['temp'] }}
     {% endfor %}
 </body>
 </html>
