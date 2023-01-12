@@ -15,7 +15,9 @@
             <button type="submit">Search</button>
         </form>
     </div>
-    {{ currentWeather['main']['temp'] }}
+    {% if request.method == 'POST': %}
+        {{ currentWeather['main']['temp'] }}
+    {% endif %}
 </body>
 </html>
 {% endblock %}

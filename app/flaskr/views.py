@@ -47,6 +47,9 @@ def forecast(location):
         currentWeather = requests.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={OpenWeather_api_key}&units=imperial').json()
         print(currentWeather)
         temp = currentWeather['main']['temp']
+
+        # ADD ERROR HANDLING - CHECK DATA ACCURACY
+
         return render_template('weather.html', user=current_user, forecast=forecast, locationConverter=locationConverter, currentWeather=currentWeather)
     else: 
         return render_template('weather.html', location=location, user=current_user)
