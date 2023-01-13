@@ -36,21 +36,23 @@ def forecast(location):
         url = f'https://api.geoapify.com/v1/geocode/autocomplete?text={city_code}&format=json&apiKey={autofill_api_key}'    
         response = requests.get(url)
         print(response.json())
+        try: 
+            locationConverter = requests.get(f'http://api.openweathermap.org/geo/1.0/direct?q={city_code},{state_code},{country_code}&limit=5&appid={OpenWeather_api_key}').json()
+            print(locationConverter, city_code)
+            for x in locationConverter:
+                lat = x['lat']
+                lon = x['lon']
+            print(lat, lon)
 
-        locationConverter = requests.get(f'http://api.openweathermap.org/geo/1.0/direct?q={city_code},{state_code},{country_code}&limit=5&appid={OpenWeather_api_key}').json()
-        print(locationConverter, city_code)
-        for x in locationConverter:
-            lat = x['lat']
-            lon = x['lon']
-        print(lat, lon)
+            currentWeather = requests.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={OpenWeather_api_key}&units=imperial').json()
+            print(currentWeather)
+            temp = currentWeather['main']['temp']
 
-        currentWeather = requests.get(f'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={OpenWeather_api_key}&units=imperial').json()
-        print(currentWeather)
-        temp = currentWeather['main']['temp']
-
-        # ADD ERROR HANDLING - CHECK DATA ACCURACY
-
-        return render_template('weather.html', user=current_user, forecast=forecast, locationConverter=locationConverter, currentWeather=currentWeather)
+            return render_template('weather.html', user=current_user, forecast=forecast, locationConverter=locationConverter, currentWeather=currentWeather)
+        except UnboundLocalError:
+            return render_template('weather.html', location=location, user=current_user)
+        except TypeError:
+            return render_template('weather.html', location=location, user=current_user)
     else: 
         return render_template('weather.html', location=location, user=current_user)
 

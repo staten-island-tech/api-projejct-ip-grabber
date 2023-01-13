@@ -196,3 +196,12 @@ header{
   margin: 0 auto;
   margin-top: 40px;
 }
+
+.card-1{
+  width: 200px;
+  height: 300px;
+  border: 3px skyblue;
+  border-radius: 12px;
+  margin: auto;
+  margin-top: 10px;
+}

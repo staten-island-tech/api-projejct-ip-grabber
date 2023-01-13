@@ -16,7 +16,11 @@
         </form>
     </div>
     {% if request.method == 'POST': %}
-        {{ currentWeather['main']['temp'] }}
+        {% if currentWeather %}
+            <div class="card-1">
+                {{ currentWeather['main']['temp'] }}
+            </div>
+        {% endif %}
     {% endif %}
 </body>
 </html>
