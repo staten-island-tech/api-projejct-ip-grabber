@@ -16,7 +16,7 @@
         </form>
     </div>
     {% for time in forecast['list'] %}
-        <p>{{ time['dt_txt'] }}: {{ time['main']['temp'] - 273 }}</p>
+        <div><p>{{ convertTimeToDate(time['dt_txt']) }}: {{ round(time['main']['temp'] - 273) }}</p></div>
     {% endfor %}
 </body>
 </html>
