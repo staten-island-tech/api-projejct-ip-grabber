@@ -17,9 +17,26 @@
     </div>
     {% if request.method == 'POST': %}
         {% if currentWeather %}
-            <div class="card-1">
-                {{ currentWeather['main']['temp'] }}
+            <div class="container-2">
+                <div class="card-1">
+                    <h1 class="auto">{{ city_code }}</h1>
+                    <!-- ADD SNOW ICON -->
+                    {% for x in currentWeather['weather'] %}
+                        {% if x['main'] == 'Clear' %}
+                            <img class="image-1" src="../static/images/sun.png">
+                        {% elif x['main'] == 'Clouds' %}
+                            <img class="image-1" src="../static/images/cloud.png">
+                        {% elif x['main'] == 'Rain' %}
+                            <img class="image-1" src="../static/images/raincloud.png">
+                        {% endif %}
+                    {% endfor %}
+                    <div class="lower">
+                        <h3>Current Temperature: {{ currentWeather['main']['temp'] }}°F</h3>
+                    </div>
+                </div>
             </div>
+        {% else %}
+            <h3 class="center">Are you sure that location exists? Try again...</h3>
         {% endif %}
     {% endif %}
 </body>
