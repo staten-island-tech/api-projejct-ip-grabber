@@ -32,6 +32,11 @@
                     {% endfor %}
                     <div class="lower">
                         <h3>Current Temperature: {{ currentWeather['main']['temp'] }}°F</h3>
+                        <h3>Feels like: {{ currentWeather['main']['feels_like'] }}°F</h3>
+                        <h3>Low/High Temperature: {{ currentWeather['main']['temp_min'] }}°F/{{ currentWeather['main']['temp_max'] }}°F</h3>
+                        {% for x in currentWeather['weather'] %}
+                            <h3>Description: {{ x['description'].title() }}</h3>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
