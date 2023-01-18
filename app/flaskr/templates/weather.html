@@ -11,7 +11,7 @@
 <body>
     <div class="container-1">
         <form class="search-1" method="post">
-            <input name="search" type="text" placeholder="Enter a location!">
+            <input name="search" type="text" placeholder="Enter a location!" id="search">
             <button type="submit">Search</button>
         </form>
     </div>
@@ -19,7 +19,7 @@
         {% if currentWeather %}
             <div class="container-2">
                 <div class="card-1">
-                    <h1 class="auto">{{ city_code }}</h1>
+                    <h1 class="auto">{{ city_code.title() }}</h1>
                     <!-- ADD SNOW ICON -->
                     {% for x in currentWeather['weather'] %}
                         {% if x['main'] == 'Clear' %}
@@ -44,6 +44,7 @@
             <h3 class="center">Are you sure that location exists? Try again...</h3>
         {% endif %}
     {% endif %}
+    <script src="/static/js/autocomplete.js"></script>
 </body>
 </html>
 {% endblock %}
