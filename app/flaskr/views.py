@@ -48,7 +48,9 @@ def forecast(location):
             print(currentWeather)
             temp = currentWeather['main']['temp']
 
-            return render_template('weather.html', user=current_user, forecast=forecast, locationConverter=locationConverter, currentWeather=currentWeather, city_code=city_code)
+            forecast123 = requests.get(f'api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={OpenWeather_api_key}').json()
+
+            return render_template('weather.html', user=current_user, forecast=forecast, locationConverter=locationConverter, currentWeather=currentWeather, city_code=city_code, forecast123=forecast123)
         except UnboundLocalError:
             return render_template('weather.html', location=location, user=current_user)
         except TypeError:
