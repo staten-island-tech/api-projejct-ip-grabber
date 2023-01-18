@@ -19,7 +19,7 @@
         {% if currentWeather %}
             <div class="container-2">
                 <div class="card-1">
-                    <h1 class="auto">{{ city_code }}</h1>
+                    <h1 class="auto">{{ city_code }}.title()</h1>
                     <!-- ADD SNOW ICON -->
                     {% for x in currentWeather['weather'] %}
                         {% if x['main'] == 'Clear' %}
